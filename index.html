@@ -9,6 +9,10 @@
     <link rel="shortcut icon" href="./fav icon/fav icon.png" type="image/x-icon">
     <!----------------- news title ------------------>
     <title>Daily apex news</title>
+
+    <!-- fontawesome icon -->
+    <script src="https://kit.fontawesome.com/dc17313a49.js" crossorigin="anonymous"></script>
+
     <!---------------- bootstrap cdn link ---------->
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
 </head>
@@ -29,9 +33,9 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mx-auto me-0">
-                            <a class="nav-link active text-primary" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active " aria-current="page" href="#">Home</a>
                             <a class="nav-link active" href="#">News</a>
-                            <a class="nav-link active" href="#">Blog</a>
+                            <a class="nav-link active text-primary" href="http://127.0.0.1:5500/blog.html">Blog</a>
                         </div>
                     </div>
                 </div>
@@ -40,21 +44,40 @@
         <!---------------- header section one end --------------------->
         <!---------------- header section two start ------------------>
         <section>
-            <div class="d-flex justify-content-around list-unstyled" id="show-category">
+            <div class="d-flex justify-content-around list-unstyled my-3" id="show-category">
 
             </div>
         </section>
         <!----------------- header section two end ----------------->
+        <!----------------- section three start ----------------->
+        <section>
+            <div class="border bg-light my-3 p-2 text-center shadow-sm">
+                <h4>0 items found</h4>
+            </div>
+        </section>
+        <!------------------ section three end ------------>
     </header>
     <!---------------------- header section end ------------->
 
     <!---------------------- main section start ---------------->
     <main>
+        <!------------- section one start ------->
+        <section>
+            <div class="row row-cols-12 my-5 " id="news-details">
 
+            </div>
+        </section>
+        <!------------- section one end ------------>
     </main>
     <!--------------------- main section end ------------------->
 
-
+    <!---------------------- footer start ---------------->
+    <footer>
+        <div>
+            <h6 class="bg-light text-center ">Copyright 2021 Daily Apex News</h6>
+        </div>
+    </footer>
+    <!----------------------- footer end ----------------->
     <!-------------------------- script link -------------------->
     <script src="./js/index.js"></script>
     <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
