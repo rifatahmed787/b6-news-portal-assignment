@@ -52,7 +52,7 @@
         <!----------------- section three start ----------------->
         <section>
             <div class="border bg-light my-3 p-2 text-center shadow-sm">
-                <h4>0 items found</h4>
+                <h4><span id="count-news">0</span> items found</h4>
             </div>
         </section>
         <!------------------ section three end ------------>
@@ -68,6 +68,39 @@
             </div>
         </section>
         <!------------- section one end ------------>
+
+        <!------------ spinner item start -------->
+        <section class="d-none" id="loader">
+            <div style="height: 500px;" class="d-flex justify-content-center align-items-center">
+                <div class="spinner-border text-success" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </section>
+        <!-------------- spinner item end ---------->
+
+        <!--------------- section modal start ------->
+        <section>
+            <div class="modal fade" id="newsDetailsModal" tabindex="-1" aria-labelledby="newsDetailsModaLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="newsDetailsModaLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="news-details" class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--------------- section moda end -------->
     </main>
     <!--------------------- main section end ------------------->
 

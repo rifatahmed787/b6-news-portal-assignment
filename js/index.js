@@ -1,16 +1,16 @@
 
 
-const loadNews = async () => {
+const loadCategory = async () => {
     const response = await fetch('https://openapi.programming-hero.com/api/news/categories');
     const data = await response.json();
     loadNewsDetails(data.data.news_category);
     displayCategory(data.data.news_category);
-
 }
 const displayCategory = categories => {
     const menu = document.getElementById('show-category');
 
     for (const category of categories) {
+        // console.log(category)
 
         const li = document.createElement('li');
         li.classList.add("nav-item");
@@ -19,7 +19,9 @@ const displayCategory = categories => {
         
         `;
         menu.appendChild(li);
+
     }
+    toggleLoader(true)
 }
 
 
@@ -27,22 +29,36 @@ const displayCategory = categories => {
 const loadNewsDetails = async (newsId) => {
 
     // console.log('button clicked', newsId)
-    // console.log(category_id)
+
 
     const url = `https://openapi.programming-hero.com/api/news/category/${newsId}`;
     const response = await fetch(url);
     const data = await response.json();
     displayNewsDetails(data.data);
+
+
 }
 
 
 
 const displayNewsDetails = (allNews) => {
-    console.log(allNews);
+    // console.log(allNews);
     const newsDetails = document.getElementById('news-details');
     newsDetails.innerHTML = '';
+
+    const showAll = document.getElementById('count-news');
+    // console.log(showAll)
+    if (allNews.length === 0) {
+        //if you want to display 20 phones only
+        showAll.innerText = 0;
+    }
+    else {
+        showAll.innerText = allNews.length;
+    }
+
     for (const news of allNews) {
         // console.log(news)
+
         const div = document.createElement('div');
         div.classList.add('shadow-lg', 'my-3');
 
@@ -64,11 +80,11 @@ const displayNewsDetails = (allNews) => {
              <p class="card-text mt-0"><small class="text-muted">${news.author.published_date}</small></p>
            </div>
            <div class="mx-auto d-flex">
-             <p class="card-text"><i class="fa-regular fa-eye"></i>  ${news.rating.number}M</p>
+             <p class="card-text"><i class="fa-regular fa-eye"></i>  ${news.total_view}K</p>
              <div class="ms-5">
              <p class="card-text"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i></p>
              </div>
-             <button type="button" class="btn btn-primary ms-5">More Details</button>
+             <button type="button" class="btn btn-primary ms-5" onclick="loadDetails('${''}')">More Details</button>
            </div>
           </div>
          </div>
@@ -79,16 +95,20 @@ const displayNewsDetails = (allNews) => {
         `;
         newsDetails.appendChild(div);
     }
+    toggleLoader(false);
 }
 
-const loadDetails = async (news_id) => {
-    const response = await fetch(`https://openapi.programming-hero.com/api/news/0${news_id}`);
-    const data = await response.json();
-    console.log(data);
+
+const toggleLoader = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none');
+    }
+    else {
+        loaderSection.classList.add('d-none');
+    }
 }
-loadDetails();
+
+loadCategory();
 
 
-
-
-loadNews();
