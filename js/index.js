@@ -3,8 +3,12 @@
 const loadCategory = async () => {
     const response = await fetch('https://openapi.programming-hero.com/api/news/categories');
     const data = await response.json();
+    // console.log(data)
+
     loadNewsDetails(data.data.news_category);
     displayCategory(data.data.news_category);
+    loadDetails(data.data.news_category)
+
 }
 const displayCategory = categories => {
     const menu = document.getElementById('show-category');
@@ -26,14 +30,15 @@ const displayCategory = categories => {
 
 
 
-const loadNewsDetails = async (newsId) => {
+const loadNewsDetails = async (category_id) => {
 
-    // console.log('button clicked', newsId)
+    // console.log('button clicked', category_id)
 
 
-    const url = `https://openapi.programming-hero.com/api/news/category/${newsId}`;
+    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const response = await fetch(url);
     const data = await response.json();
+    // console.log(data)
     displayNewsDetails(data.data);
 
 
@@ -49,7 +54,7 @@ const displayNewsDetails = (allNews) => {
     const showAll = document.getElementById('count-news');
     // console.log(showAll)
     if (allNews.length === 0) {
-        //if you want to display 20 phones only
+
         showAll.innerText = 0;
     }
     else {
@@ -84,7 +89,7 @@ const displayNewsDetails = (allNews) => {
              <div class="ms-5">
              <p class="card-text"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i class="fa-regular fa-star"></i></p>
              </div>
-             <button type="button" class="btn btn-primary ms-5" onclick="loadDetails('${''}')">More Details</button>
+             <button type="button" class="btn btn-primary ms-5" onclick="loadDetails('${news.news_id}' )">More Details</button>
            </div>
           </div>
          </div>
@@ -109,6 +114,34 @@ const toggleLoader = isLoading => {
     }
 }
 
+
+const loadDetails = async (news_id) => {
+    // console.log(news_id)
+    const response = await fetch(`https://openapi.programming-hero.com/api/news/${news_id}`);
+    const data = await response.json();
+    // console.log(data)
+
+    displayDetails(data.data);
+
+}
+
+const displayDetails = async (news) => {
+    const newsDetails = document.getElementById('news-details');
+    for (const n of news) {
+        newsDetails.innerHTML = `
+       
+       `;
+    }
+
+
+    const modalTitle = document.getElementById('newsDetailsModaLabel');
+
+
+
+
+}
+
+loadDetails();
 loadCategory();
 
 
